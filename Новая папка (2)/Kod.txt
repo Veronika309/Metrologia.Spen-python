@@ -1,0 +1,237 @@
+mass=[]
+surname_list=[]
+name_list=[]
+date_list=[]
+age_list=[]
+gen_list=[]
+spisok_list=[[surname_list],[name_list], [date_list], [age_list], [gen_list]]
+i=0
+for i in range(int(input ('Введите количество элементов в списке?'))):
+    gen_list.append(str(input('Ваш пол?-м/ж ')))
+    name_list.append(str(input('Как Вас зовут? ')))
+    surname_list.append(str(input('Ваша Фамилия? ' )))
+    date_list.append(str(input('Ваш год рождения? ')))
+    age_list.append(int(input('Ваш возвраст?')))
+    i+=1
+print(spisok_list)
+surname_list=sorted(surname_list)
+print('Отсортированные фамилии', surname_list)
+lalka=0;
+olol=0;
+#lalka lalka lalka
+sredn_age=0
+count=0
+'''
+  kakakxa=5
+count=4
+count
+count
+count
+count
+
+
+
+'''
+summa=0
+for i in range(len(age_list)):
+    summa=summa+age_list[i]
+    count+=1
+sredn_age=summa/count;
+if sredn_age<16:
+    print('В вашем списке преобладает младшее поколение')
+elif  16<sredn_age> 45:
+    print('В вашем списке преобладает среднее поколение')
+else:
+    print('В вашем списке преобладает старшее поколение')
+print('А теперь найдём самую длинную фамилию в списке:')
+temporary=len(surname_list[0])
+temp_elem=surname_list[0]
+for i in range(len(surname_list)):
+    if temporary<len(surname_list[i]):
+        temporary=len(surname_list[i])
+        temp_elem=surname_list[i]
+        i+=1
+print(temporary,'-',temp_elem)
+count_m=0
+temp_g=0
+for i in range(len(gen_list)):
+    if gen_list[i]=='м':
+        count_m+=1
+    else:
+        if gen_list[i]=='ж':
+            temp_g+=1
+how=0
+if temp_g>count_m:
+    how=temp_g-count_m
+    print('Женщин больше чем мужчин на-',how )
+else:
+    if count_m < temp_g:
+        how=count_m-temp_g
+        print('Мужчин больше чем женщин на-',how)
+    else:
+        if count_m == temp_g :
+            print('Одинаковое колличество мужчин и женщин')
+for i in range(int(input ('Введите количество элементов в массиве?'))):
+    mass.append(int(input('element= ')))
+    i+=1
+print(mass)
+N=len(mass)
+print('Проверим уникальность элементов в массиве')
+i=0
+for i in range(N-1):
+    for j in range(i+1,N):
+        if mass[i]==mass[j]: 
+            print('Одиаковые элементы есть')
+ 
+print('Все Элементы уникальны')
+print('Отсортируем массив по возрастанию')
+print('Изначальный вариант -',mass)
+copy_mass=mass[:]
+copy_mass.sort()
+print('Конечный вариант-',copy_mass)
+from random import random
+N=len(mass)
+arr=[0]*N
+for i in range(N):
+    arr[i]=int(random()*50)
+print('Новый массив-',arr)
+min_1=mass[0]
+max_1=mass[0]
+for i in range(len(mass)):
+    if min_1>mass[i]:
+        min_1=mass[i]
+print('Минимальный элемент первого массива- ',min_1)
+for i in range(len(mass)):
+    if max_1<=mass[i]:
+        max_1=mass[i]
+print('Максимальный элемент первого массива- ',max_1)
+min_2=arr[0]
+max_2=arr[0]
+for i in range(len(arr)):
+    if min_2>arr[i]:
+        min_2=arr[i]
+razn_1= max_1 - min_1
+print('Разница между макс и мин элементом первого массива- ',razn_1)
+print('Минимальный элемент второго массива- ',min_2)
+for i in range(len(arr)):
+    if max_2<=arr[i]:
+        max_2=arr[i]
+print('Максимальный элемент второго массива- ',max_2)
+razn_2= max_2 - min_2
+print('Разница между макс и мин элементом второго массива',razn_2)
+srednee_ar=0
+srednee_ar= (min_1 + min_2 + max_1 + max_2)/4
+print('Среднее арифметическое этих чисел- ',srednee_ar)
+count=0
+temp=0
+for i in range(len(mass)):
+    if mass[i]/2==1:
+        count+=1
+    else:
+        temp+=1
+print('Колличество чётных элементов первого массива-',count)
+print('Колличество нечётных элементов первого массива-',temp)
+count=0
+temp=0
+for i in range(len(arr)):
+    if arr[i]/2==1:
+        count+=1
+    else:
+        temp+=1
+print('Колличество чётных элементов второго массива-',count)
+print('Колличество нечётных элементов первого массива-',temp)
+print('Посчитаем числа Фибоначи')
+def fibo(n):
+    a=0
+    b=1
+    print(a,b,end=' ')
+    for i in range(2, n + 1):
+        c=a + b
+        a,b=b,c
+        print(c, end=' ')
+n=10
+fibo(n)
+print(fibo(n))
+print('Поиграем в очко?')
+count=0
+while True:
+    choice=input('Будете брать карту? y/n\n')
+    if choice=='y':
+        current=koloda.pop()
+        print('Вам попалась карта достоинством %d' %current)
+        count+=current
+        if count>21:
+            print('Извините, но вы проиграли')
+            break
+        elif count==21:
+            print('Поздравляю, вы набрали 21!')
+            break
+        else:
+            print('У вас %d очков.' %count)
+    elif choice=='n':
+        print('У вас %d очков и вы закончили игру.' %count)
+        break
+print('До новых встреч!')
+def run(code):
+    code=parse(code)
+    blocks=block(code)
+    x=i=0
+    bf={0:0}
+    while i<len(code):
+        sym=code[i]
+        if sym=='>':
+            x+=1
+            bf.setdefault(x,0)
+        elif sym=='<':
+            x-=1
+        elif sym=='+':
+            bf[x]+=1
+        elif sym=='-':
+            bf[x]-=1
+        elif sym=='.':
+            print(chr(bf[x]), end='')
+        elif sym==',':
+            bf[x]=int(input('Input: '))
+        elif sym=='[':
+            if not bf[x]: i=blocks[i]
+        elif sym==']':
+            if bf[x]: i=blocks[i]
+        i+=1
+def block(code):
+    opened=[]
+    blocks={}
+    for i in range(len(code)):
+        if code[i]=='[':
+            opened.append(i)
+        elif code[i]==']':
+            blocks[i]=opened[-1]
+            blocks[opened.pop()]=i
+    return blocks
+def parse(code):
+    return ''.join(c for c in code if c in '><+-.,[]')
+def run(code):
+    code = parse(code)
+    x=i=0
+    bf={0: 0}
+    blocks=block(code)
+    l=len(code)
+    while i < l:
+        sym=code[i]
+        if sym=='>':
+            x+=1
+            bf.setdefault(x, 0)
+        elif sym=='<':
+            x-=1
+        elif sym=='+':
+            bf[x]+=1
+        elif sym=='-':
+            bf[x]-=1
+        elif sym=='.':
+            print(chr(bf[x]), end='')
+        elif sym==',':
+            bf[x]=int(input('Input: '))
+        elif sym=='[':
+            if not bf[x]: i=blocks[i]
+        elif sym==']':
+            if bf[x]: i=blocks[i]
+        i+=1   #ололоша
